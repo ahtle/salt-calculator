@@ -1,0 +1,15 @@
+.rc-slider {
+    margin-left: 16px;
+    margin-right: 8px;
+}
+.rc-slider-dot {
+    width: 1px;
+    height: 10px;
+    border: none;
+}
+.rc-slider-tooltip-inner {
+    font-size: 1em;
+    margin-top: 10px;
+    background: none;
+    box-shadow: none;
+}
