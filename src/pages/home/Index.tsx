@@ -5,8 +5,8 @@ import saltLogoWhite from "../../images/salt-logo-white.svg";
 const Home: React.FC = () => {
     return (
         <PageWrapper>
-            <div className="flex justify-center">
-                <div className="w/full md:w-4/5">
+            <div className="flex justify-center px-2 md:px-0">
+                <div className="w-full xl:w-3/4">
                     <img
                         className="mb-14"
                         src={saltLogoWhite}
@@ -14,9 +14,9 @@ const Home: React.FC = () => {
                     />
 
                     <div className="flex flex-col items-center">
-                        <h1 className="mb-10">Loan Calculator</h1>
+                        <h1 className="mb-10 text-white">Loan Calculator</h1>
 
-                        <div className="w-full md:w-4/5">
+                        <div className="w-full lg:w-4/5 xl:w-3/4">
                             <LoanCalculator />
                         </div>
                     </div>

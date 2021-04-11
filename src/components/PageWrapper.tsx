@@ -4,11 +4,7 @@ interface Props {
 
 const PageWrapper: React.FC<Props> = (props) => {
     return (
-        <div
-            className={`h-full py-10 ${
-                props.theme ? "" : "text-white bg-navy-salt"
-            }`}
-        >
+        <div className={`h-full py-10 ${props.theme ? "" : "bg-navy-salt"}`}>
             <div className="container mx-auto">{props.children}</div>
         </div>
     );

@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/home/Index";
 
-const App: React.FC = () => {
+function App() {
     return (
         <Router>
             <Switch>
@@ -9,6 +9,6 @@ const App: React.FC = () => {
             </Switch>
         </Router>
     );
-};
+}
 
 export default App;

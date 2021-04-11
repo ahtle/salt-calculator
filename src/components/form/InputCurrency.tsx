@@ -8,7 +8,7 @@ type Props = {
     onChange: (num: number) => void;
 };
 
-const InputCurrency: React.FC<Props> = (props) => {
+const InputCurrency = (props: Props) => {
     const [currencyStr, setCurrencyStr] = useState<string>("");
     const [showError, setShowError] = useState<boolean>(false);
 
@@ -53,7 +53,7 @@ const InputCurrency: React.FC<Props> = (props) => {
                     onChange={onChange}
                 />
             </div>
-            <p className="text-red-500">
+            <p className="text-sm text-red-500">
                 {showError && (
                     <span>{`Must be between $${currencyFormat(
                         props.min

@@ -38,4 +38,10 @@
     .text-navy-salt {
         color: #28283D;
     }
+    .border-green-salt {
+        border-color: #00FFBD;
+    }
+    .border-navy-salt {
+        border-color: #28283D;
+    }
 }
