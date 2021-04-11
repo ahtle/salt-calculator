@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { currencyFormat } from "../../utility/formatter";
 
 type Props = {
     label: string;
@@ -16,11 +17,6 @@ const InputCurrency = (props: Props) => {
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         let num = e.target.value.replace(/,/g, "");
         props.onChange(parseInt(num));
-    };
-
-    // num to currency formatter
-    const currencyFormat = (num: number) => {
-        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     };
 
     // process incoming num value

@@ -4,7 +4,7 @@ import InterestOnlySection from "./InterestOnlySection";
 import "./calculator.css";
 
 const LoanCalculator = () => {
-    const [loan, setLoan] = useState<number>(1000);
+    const [loan, setLoan] = useState<number>(10000000);
     const [months, setMonths] = useState<number>(12);
     const [ltv, setLtv] = useState<number>(60);
     const [ltvOptions] = useState<Array<number>>([30, 40, 50, 60, 70]);
@@ -26,7 +26,7 @@ const LoanCalculator = () => {
                 setLtv={(num) => setLtv(num)}
                 setRepaymentType={(str) => setRepaymentType(str)}
             />
-            <InterestOnlySection />
+            <InterestOnlySection loan={loan} months={months} ltv={ltv} />
         </div>
     );
 };
