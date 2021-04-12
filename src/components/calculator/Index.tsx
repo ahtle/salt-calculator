@@ -1,6 +1,7 @@
 import { useState } from "react";
 import UserInputSection from "./UserInputSection";
 import InterestOnlySection from "./InterestOnlySection";
+import PnISection from "./PnISection";
 import "./calculator.css";
 
 const LoanCalculator = () => {
@@ -26,7 +27,12 @@ const LoanCalculator = () => {
                 setLtv={(num) => setLtv(num)}
                 setRepaymentType={(str) => setRepaymentType(str)}
             />
-            <InterestOnlySection loan={loan} months={months} ltv={ltv} />
+
+            {repaymentType === "Interest Only" ? (
+                <InterestOnlySection loan={loan} months={months} ltv={ltv} />
+            ) : (
+                <PnISection loan={loan} months={months} ltv={ltv} />
+            )}
         </div>
     );
 };

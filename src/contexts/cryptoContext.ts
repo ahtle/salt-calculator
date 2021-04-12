@@ -1,17 +1,12 @@
 import { createContext } from "react";
 
 type Coin = {
-    USD: number  
+    USD: number
 }
 
 export type CryptoProps = {
     data: {
-        BTC: Coin,
-        DASH: Coin,
-        DOGE: Coin,
-        ETH: Coin,
-        LTC: Coin,
-        SALT: Coin,
+        [key: string]: Coin
     };
     loaded: boolean;
 }

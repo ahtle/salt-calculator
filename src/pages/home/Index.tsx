@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import PageWrapper from "../../components/PageWrapper";
-import LoanCalculator from "../../components/calculator/LoanCalculator";
+import LoanCalculator from "../../components/calculator/Index";
 import saltLogoWhite from "../../images/salt-logo-white.svg";
 import {
     CryptoContext,
@@ -11,6 +11,7 @@ import axios from "axios";
 
 const Home = () => {
     const [crypto, setCrypto] = useState<CryptoProps>(cryptoInitialState);
+    const [error, setError] = useState<boolean>(false);
 
     const getData = () => {
         getCrypto();
@@ -19,24 +20,21 @@ const Home = () => {
     const getCrypto = async () => {
         if (!crypto.loaded) {
             try {
-                // const data = await axios(
-                //     "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,LTC,DASH,DOGE,ETH,SALT&tsyms=USD",
-                //     {
-                //         headers: {
-                //             authorization: process.env.REACT_APP_API_KEY,
-                //         },
-                //     }
-                // );
-                // if (data.status === 200) {
-                //     console.log(data.data);
-                //     const newCrypto = { ...data.data, loaded: true };
-                //     setCrypto(newCrypto);
-                // }
-
-                const newCrypto = { ...crypto, loaded: true };
-                setCrypto(newCrypto);
+                const config = {
+                    headers: {
+                        authorization: process.env.REACT_APP_API_KEY,
+                    },
+                };
+                const res = await axios(
+                    "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,LTC,DASH,DOGE,ETH,SALT&tsyms=USD",
+                    config
+                );
+                const data = { ...res.data };
+                setCrypto({ data, loaded: true });
+                setError(false);
             } catch (err) {
                 console.log(err);
+                setError(true);
             }
         }
     };
@@ -57,15 +55,22 @@ const Home = () => {
                     />
 
                     <div className="flex flex-col items-center">
-                        <h1 className="mb-10 text-white">Loan Calculator</h1>
+                        <h1 className="mb-10 text-2xl text-white sm:text-4xl md:text-6xl">
+                            Loan Calculator
+                        </h1>
 
                         <div className="w-full md:w-11/12 2xl:w-3/4">
-                            {crypto.loaded ? (
+                            {!error && crypto.loaded ? (
                                 <CryptoContext.Provider value={crypto}>
                                     <LoanCalculator />
                                 </CryptoContext.Provider>
                             ) : (
                                 <h3 className="text-2xl text-white">Loading</h3>
+                            )}
+                            {error && (
+                                <h3 className="text-2xl text-white">
+                                    Please try again another time...
+                                </h3>
                             )}
                         </div>
                     </div>

@@ -21,16 +21,13 @@ const InputCurrency = (props: Props) => {
 
     // process incoming num value
     useEffect(() => {
-        let currency = "0";
-        if (props.value) {
-            currency = currencyFormat(props.value);
+        let currency = currencyFormat(props.value);
 
-            // validata min / max
-            if (props.value < props.min || props.value > props.max) {
-                setShowError(true);
-            } else {
-                setShowError(false);
-            }
+        // validata min / max
+        if (props.value < props.min || props.value > props.max) {
+            setShowError(true);
+        } else {
+            setShowError(false);
         }
         setCurrencyStr(currency);
     }, [props.value, props.min, props.max]);
