@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import PageWrapper from "../../components/PageWrapper";
 import LoanCalculator from "../../components/calculator/Index";
 import saltLogoWhite from "../../images/salt-logo-white.svg";
@@ -13,11 +13,7 @@ const Home = () => {
     const [crypto, setCrypto] = useState<CryptoProps>(cryptoInitialState);
     const [error, setError] = useState<boolean>(false);
 
-    const getData = () => {
-        getCrypto();
-    };
-
-    const getCrypto = async () => {
+    const getData = useCallback(async () => {
         if (!crypto.loaded) {
             try {
                 const config = {
@@ -37,12 +33,12 @@ const Home = () => {
                 setError(true);
             }
         }
-    };
+    }, [crypto]);
 
     // on mounted
     useEffect(() => {
         getData();
-    }, [crypto]);
+    }, [getData]);
 
     return (
         <PageWrapper>
