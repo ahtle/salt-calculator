@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { currencyFormat } from "../../utility/formatter";
 import {
     collateralNeeded,
@@ -7,6 +7,9 @@ import {
     interestOnlyMonthlyPayment,
     usdToCrypto,
 } from "../../utility/calculations";
+import { CryptoContext } from "../../contexts/cryptoContext";
+
+// images
 import btc from "../../images/btc.png";
 import ltc from "../../images/ltc.png";
 import dash from "../../images/dash.png";
@@ -25,6 +28,11 @@ const InterestOnlySection = (props: Props) => {
     const [interest, setInterest] = useState<number>(0);
     const [monthlyPayment, setMonthlyPayment] = useState<number>(0);
     const [collateral, setCollateral] = useState<number>(0);
+    const crypto = useContext(CryptoContext);
+
+    useEffect(() => {
+        console.log(crypto);
+    }, [crypto]);
 
     useEffect(() => {
         // APR
@@ -92,32 +100,57 @@ const InterestOnlySection = (props: Props) => {
             </div>
 
             <div className="grid grid-cols-2 gap-2 mb-4">
-                <div className="flex mb-3">
-                    <img src={btc} alt="Bitcoin icon" className="h-4 mr-2" />
+                <div className="flex items-center mb-3">
+                    <img
+                        src={btc}
+                        alt="Bitcoin icon"
+                        className="mr-2"
+                        style={{ width: 15 }}
+                    />
                     <p className="text-xs">
                         {usdToCrypto(collateral, 12.1)} BTC
                     </p>
                 </div>
-                <div className="flex mb-3">
-                    <img src={ltc} alt="Litecoin icon" className="h-4 mr-2" />
+                <div className="flex items-center mb-3">
+                    <img
+                        src={ltc}
+                        alt="Litecoin icon"
+                        className="mr-2"
+                        style={{ width: 15 }}
+                    />
                     <p className="text-xs">
                         {usdToCrypto(collateral, 12.1)} LTC
                     </p>
                 </div>
-                <div className="flex mb-3">
-                    <img src={dash} alt="Dashcoin icon" className="h-4 mr-2" />
+                <div className="flex items-center mb-3">
+                    <img
+                        src={dash}
+                        alt="Dashcoin icon"
+                        className="mr-2"
+                        style={{ width: 15 }}
+                    />
                     <p className="text-xs">
                         {usdToCrypto(collateral, 12.1)} DASH
                     </p>
                 </div>
-                <div className="flex mb-3">
-                    <img src={doge} alt="Dogecoin icon" className="h-4 mr-2" />
+                <div className="flex items-center mb-3">
+                    <img
+                        src={doge}
+                        alt="Dogecoin icon"
+                        className="mr-2"
+                        style={{ width: 15 }}
+                    />
                     <p className="text-xs">
                         {usdToCrypto(collateral, 12.1)} DOGE
                     </p>
                 </div>
-                <div className="flex mb-3">
-                    <img src={eth} alt="ETH icon" className="h-4 mr-2" />
+                <div className="flex items-center mb-3">
+                    <img
+                        src={eth}
+                        alt="ETH icon"
+                        className="mr-2"
+                        style={{ width: 15 }}
+                    />
                     <p className="text-xs">
                         {usdToCrypto(collateral, 12.1)} ETH
                     </p>
