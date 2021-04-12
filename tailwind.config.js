@@ -4,8 +4,8 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                europa: ["Europa", "sans-serif"],
-                "europa-light": ["Europa-Light", "sans-serif"],
+                // europa: ["Europa", "sans-serif"],
+                // "europa-light": ["Europa-Light", "sans-serif"],
             },
         },
     },

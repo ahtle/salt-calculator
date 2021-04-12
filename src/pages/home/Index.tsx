@@ -51,7 +51,7 @@ const Home = () => {
                     />
 
                     <div className="flex flex-col items-center">
-                        <h1 className="mb-10 text-2xl text-white sm:text-4xl md:text-6xl">
+                        <h1 className="mb-10 text-2xl font-medium text-white sm:text-4xl md:text-6xl">
                             Loan Calculator
                         </h1>
 

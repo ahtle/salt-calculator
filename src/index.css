@@ -2,22 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('//db.onlinewebfonts.com/c/23c0fcab84d99da0de762de7e220a6e1?family=Europa');
+/* @import url('https//db.onlinewebfonts.com/c/23c0fcab84d99da0de762de7e220a6e1?family=Europa'); */
 
-@font-face {
+/* @font-face {
     font-family: 'Europa-Light';
     src: local('Europa-Light'), url(./fonts/europa-light-webfont.ttf) format('ttf');
-}
+} */
 
 @layer base {
     html, body, #root {
         @apply h-full;
     }
     body {
-        @apply font-europa-light;
+        /* @apply font-europa-light; */
+        font-family: Helvetica, Arial, sans-serif;
     }
     h1,h2,h3 {
-        @apply font-europa;
+        /* @apply font-europa; */
     }
     h1 {
         @apply font-bold;
